@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0
+        }
+        li{
+            list-style: none;
+        }
+        body{
+            background: #f9f9f9
+        }
+        #view{
+            width: 1110px;
+            margin: 0 auto
+        }
+        #view h1{
+            text-align: center;
+            font-size: 24px;
+            color: #585858;
+            font-weight: normal;
+            margin: 10px
+        }
+        #view ul{
+            overflow: hidden;
+        }
+        #view li{
+            background: #ffffff;
+            margin: 5px;
+            display: inline-block;
+            padding: 5px
+        }
+        #view li img{
+            width: 100%;
+        }
+        #view li h5{
+            width: 230px;
+            font-size:12px ;
+            font-weight: normal;
+            color: #bf9e6b;
+            margin:0 auto;
+            margin-top: 5px;
+            
+        }
+        #view li h3{
+            width: 230px;
+            font-size:13px ;
+            font-weight: normal;
+            color: #4a4a4a;
+            margin:0 auto;
+            margin-top: 5px
+        }
+        #view li h2{
+            width: 60px;
+            font-size:16px ;
+            font-weight: normal;
+            color: #fac75d;
+            margin-left: 10px;
+            margin-top: 10px;
+            display: inline-block
+        }
+        #view li section{
+            width: 30px;
+            display: inline-block;
+            background: #ab7fd1;
+            font-size: 13px;
+            color: white;
+            text-align: center;
+            border-radius: 3px
+        }
+        #view li span{
+            width: 40px;
+            display: inline-block;
+            border: 1px solid #fb4c81;
+            color: #fb4c81;
+            font-size: 13px;
+            text-align: center;
+            margin-left: 6px;
+            border-radius: 3px
+        }
+        #view li p{
+            font-size: 11px ;
+            color: #666;
+            margin-left: 14px;
+            margin-top: 10px
+        }
+        #view li div{
+            width: 255px;
+            height: 255px;
+            background: url(lazyload.gif) center center no-repeat;
+        }
+        #nav{
+            position: fixed;
+            left: 5%;
+            top: 200px;
+        }
+        #nav div{
+            width: 80px;
+            height: 50px;
+            border-bottom:2px solid #cacaca;
+            line-height: 50px;
+            text-align: center;
+            color: #cacaca;
+            font-size: 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="view">
+
+    </div>
+    <div id="nav">
+    </div>
+</body>
+<script src="data.js"></script>
+<script>
+
+    var view=document.getElementById("view");
+    var view_h1=document.getElementById("view").getElementsByTagName("h1");
+    var nav=document.getElementById("nav");
+    var imgs=document.getElementById("view").getElementsByTagName("img");
+
+    
+    // 布局
+    for(var i=0;i<data.length;i++){
+
+        var floor=document.createElement("div");
+        var nav_cont=document.createElement("div");
+        var h1=document.createElement("h1")
+        var ul=document.createElement("ul");
+        h1.innerHTML=data[i].type;
+        nav_cont.innerHTML=data[i].type;
+
+        for(var j=0;j<data[i].goodList.length;j++){
+
+            
+            var li=document.createElement("li");
+            var img_box=document.createElement("div")
+            var img=document.createElement("img");
+            var sto=document.createElement("h5");
+            var tit=document.createElement("h3");
+            var pri=document.createElement("h2");
+            var sec=document.createElement("section");
+            var spa=document.createElement("span");
+            var nice=document.createElement("p");
+            
+            img.setAttribute("imgUrl",data[i].goodList[j].imgUrl);
+            // img.src=data[i].goodList[j].imgUrl;
+            sto.innerHTML=data[i].goodList[j].store;
+            tit.innerHTML=data[i].goodList[j].title;
+            pri.innerHTML="￥"+data[i].goodList[j].price;
+            sec.innerHTML="精选"
+            spa.innerHTML="一起拼"
+            nice.innerHTML=data[i].goodList[j].nice+"条好评";
+
+            img_box.appendChild(img);
+            li.appendChild(img_box);
+            li.appendChild(sto);
+            li.appendChild(tit);
+            li.appendChild(pri);
+            li.appendChild(sec);
+            li.appendChild(spa);
+            li.appendChild(nice);
+            ul.appendChild(li);
+            
+
+        }
+        floor.appendChild(h1);
+        floor.appendChild(ul);
+        view.appendChild(floor)
+        nav.appendChild(nav_cont)
+    }
+
+    // 滚动事件
+    var count;
+    nav.children[0].style.color="purple"
+    window.onscroll=function(){
+        
+        var st=document.documentElement.scrollTop||document.body.scrollTop;
+
+        for(var m=0;m<data.length;m++){
+
+            var ot=view_h1[m].offsetTop;
+
+            if(ot<=st+200&&count!=m){
+
+                for(var q=0;q<nav.children.length;q++){
+                    nav.children[q].style.color="#cacaca"
+                }
+
+                nav.children[m].style.color="purple"
+
+            }
+
+        }
+
+    }
+
+    // 点击事件
+
+    for(var s=0;s<nav.children.length;s++){
+
+        nav.children[s].index=s
+
+        nav.children[s].onclick=function(){
+            document.documentElement.scrollTop=view_h1[this.index].offsetTop
+        }
+
+    }
+
+    // 图片懒加载
+
+    function fun(){
+
+        for(var t=0;t<imgs.length;t++){
+
+            var st=document.documentElement.scrollTop||document.body.scrollTop;
+            var h=window.innerHeight;
+            var ot=imgs[t].offsetTop;
+            if(ot<st+h-150){
+                imgs[t].src=imgs[t].getAttribute("imgUrl")
+            }else{
+                break
+            }
+        }
+    }  
+    fun()
+    window.addEventListener("scroll",fun)
+
+
+</script>
+</html>
