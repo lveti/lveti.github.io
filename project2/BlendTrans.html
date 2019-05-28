@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0
+        }
+        li{
+            list-style: none;
+        }
+       #view{
+			width: 800px;
+			height:454px;
+			position: relative;
+		}
+		#view img{
+			width:100%;
+			display:none;
+			position: absolute;
+			top:0;
+			left:0;
+		}
+        #btn li{
+            width: 80px;
+            height: 10px;
+            border-radius: 5px;
+            background: #dedede;
+            margin:0 5px; 
+            float: left;
+            cursor:pointer
+        }
+        #btn{
+            position: absolute;
+            overflow: hidden;
+            left: 50%;
+            margin-left: -225px;
+            bottom: 20px
+        }
+        .prev{
+            position: absolute;
+            top:50%;
+            left: 0;
+            margin-top: -30px;
+            width: 70px;
+            height: 60px;
+            background: rgba(5, 5, 5,0.3);
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            font-size: 30px;
+            border: none;
+            outline: 0;
+            display: none
+        }
+        .next{
+            position: absolute;
+            top:50%;
+            right: 0;
+            margin-top: -30px;
+            width: 70px;
+            height: 60px;
+            background: rgba(5, 5, 5,0.3);
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            font-size: 30px;
+            border: none;
+            outline: 0;
+            display: none
+        }
+        #view:hover .next{
+            display: block
+        }
+        #view:hover .prev{
+            display: block
+        }
+    </style>
+</head>
+
+<body>
+    <div id="view">
+        <img src="images/e.jpg" alt="">
+        <img src="images/f.jpg" alt="">
+        <img src="images/g.jpg" alt="">
+        <img src="images/h.jpg" alt="">
+        <img src="images/i.jpg" alt="">
+        <ul id="btn">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        
+        <button class="prev">&gt;</button>
+        <button class="next">&lt;</button>
+    </div>
+</body>
+<script src="jquery-1.8.3.js"></script>
+<script>
+
+    $("img:first").show();
+    $("#btn li:eq(0)").css({background:"purple"})
+    var x=0;
+    var flag=true
+    $(".next").click(function(){
+
+        if(flag){
+            flag=false
+            $("img:eq("+x+")").fadeOut(1000);
+            $("#btn li:eq("+x+")").css({background:"#dedede"})
+            x++;
+            if(x>4){
+                x=0;
+            }
+            $("img:eq("+x+")").fadeIn(1000,function(){
+                flag=true
+            });
+            $("#btn li:eq("+x+")").css({background:"purple"})
+        }
+        
+    })
+    $(".prev").click(function(){
+
+        if(flag){
+            flag=false
+            $("img:eq("+x+")").fadeOut(1000);
+            $("#btn li:eq("+x+")").css({background:"#dedede"})
+            x--;
+            if(x<0){
+                x=4;
+            }
+            $("img:eq("+x+")").fadeIn(1000,function(){
+                flag=true
+            });
+            $("#btn li:eq("+x+")").css({background:"purple"})
+        }
+    })
+    
+    var timer;
+
+    timer=setInterval(function(){
+        $("img:eq("+x+")").fadeOut(1000);
+        $("#btn li:eq("+x+")").css({background:"#dedede"})
+        x++;
+        if(x>4){
+            x=0;
+        }
+        $("img:eq("+x+")").fadeIn(1000);
+        $("#btn li:eq("+x+")").css({background:"purple"})
+    },3000)
+
+    $("#view").mouseover(function(){
+        clearInterval(timer)
+    })
+    $("#view").mouseout(function(){
+        timer=setInterval(function(){
+        $("#btn li:eq("+x+")").css({background:"#dedede"})
+        $("img:eq("+x+")").fadeOut(1000);
+        x++;
+        if(x>4){
+            x=0;
+        }
+        $("img:eq("+x+")").fadeIn(1000);
+        $("#btn li:eq("+x+")").css({background:"purple"})
+    },2000)
+    })
+
+    for(var i=0;i<btn.children.length;i++){
+        btn.children[i].setAttribute("a",i)
+    }
+    $("#btn").click(function(e){
+        if(e.target.nodeName=="LI"){
+            if(x==e.target.getAttribute("a")){
+                return 
+            }
+            $("img:eq("+x+")").fadeOut(1000);
+            btn.children[x].style.background="#dedede"
+
+            x=e.target.getAttribute("a")
+            
+            
+            $("img:eq("+x+")").fadeIn(1000);
+            btn.children[x].style.background="purple"
+        }
+
+    })
+   
+
+    
+    
+</script>
+</html>
