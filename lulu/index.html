@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-1.8.3.js"></script>
+	<style>
+		body{
+			overflow: hidden
+		}
+		*{
+			margin:0;
+			padding:0;
+		}
+		.view{
+			width:480px;
+			height: 960px;
+			position: relative;
+			margin:100px auto;
+		}
+		.view div{
+			width:27px;
+			height:48px;
+			position: absolute;
+			background:url("images/JPEG/lw1.jpg");
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="view" id="view">
+		
+	</div>
+</body>
+<script>
+	//插入100个元素 铺满view
+	for(var i=0;i<20;i++){
+
+		for(var j=0;j<20;j++){
+
+			var node=document.createElement("div");
+
+			node.style.left=i*27+"px";
+			node.style.top=j*48+"px";
+
+			// 记录元素位置信息，方便回家
+			node.setAttribute("l",i*27)
+			node.setAttribute("t",j*48)
+
+			node.style.backgroundPosition=-i*27+"px -"+j*48+"px"
+
+			view.appendChild(node)
+
+		}
+
+	}
+	
+
+	function random(a,b){
+		return Math.floor(Math.random()*(b-a+1))+a;
+	}
+
+// left -1000 2920
+// top -1000 2080
+	
+var arr=["lw1.jpg","lw1_1.jpg","lw2.jpg","lw2_1.jpg","lw3.jpg","lw4.jpg","lw5.jpg","lw6.jpg","lw7.jpg","lw8.jpg","lw9.jpg","lw10.jpg","lw11.jpg","lw12.jpg","lw13.jpg","lw14.jpg","lw15.jpg","lw16.jpg","lw17.jpg","lw18.jpg","lw19.jpg","lw20.jpg","lw21.jpg","lw22.jpg","lw23.jpg","lw24.jpg","lw25.jpg","lw26.jpg","lw27.jpg","lw28.jpg","lw29.jpg","lw30.jpg","lw31.jpg","lw32.jpg","lw33.jpg","lw34.jpg","lw35.jpg","lw36.jpg","lw37.jpg","lw38.jpg","lw39.jpg","lw40.jpg","lw41.jpg","lw42.jpg","lw43.jpg","lw44.jpg","lw45.jpg","lw46.jpg","lw47.jpg","lw48.jpg","lw49.jpg","lw50.jpg","lw51.jpg","lw52.jpg","lw53.jpg","lw54.jpg","lw55.jpg","lw56.jpg","lw57.jpg"]
+
+	var x=0;
+
+	document.onclick=function(){
+
+		$("#view div").each(function(){
+
+			var self=this;
+
+			$(this).animate({
+				left:random(-1000,2920),
+				top:random(-1000,2080),
+				opacity:0
+			},1500,function(){
+				var l=parseInt($(self).attr("l"));
+				var t=parseInt($(self).attr("t"));
+
+				$(self).animate({left:l,top:t,opacity:1},1500)
+
+			})
+
+		})
+
+		setTimeout(function(){
+
+			x++;
+			if(x>arr.length-1){
+				x=0
+			}
+			$("#view div").css({
+				backgroundImage:"url(images/JPEG/"+arr[x]+")"
+			})
+
+		},1000)
+
+
+	}
+</script>
+</html>
