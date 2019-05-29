@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        li {
+            list-style: none;
+        }
+        #box{
+            width: 1400px;
+            margin: 0 auto
+        }
+        .view {
+            width: 625px;
+            height: 270px;
+            position: relative;
+            float: left;
+            margin-right: 50px;
+            margin-top: 50px
+        }
+
+        .view img {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 10px;
+            display: none
+        }
+
+        #btn li {
+            width: 20px;
+            height: 5px;
+            border-radius: 5px;
+            background: #bcbcbc;
+            margin: 0 5px;
+            float: left;
+            cursor: pointer
+        }
+
+        #btn {
+            position: absolute;
+            overflow: hidden;
+            left: 50%;
+            margin-left: -45px;
+            bottom: 16px
+        }
+
+        .prev {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            margin-top: -25px;
+            width: 40px;
+            height: 50px;
+            background: rgba(5, 5, 5, 0.3);
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            font-size: 14px;
+            border: none;
+            outline: 0;
+            display: none;
+            color: white
+        }
+
+        .next {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            margin-top: -25px;
+            width: 40px;
+            height: 50px;
+            background: rgba(5, 5, 5, 0.3);
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            font-size: 14px;
+            border: none;
+            outline: 0;
+            color: white;
+            display: none
+        }
+
+        .view:hover .next {
+            display: block
+        }
+
+        .view:hover .prev {
+            display: block
+        }
+    </style>
+</head>
+
+<body>
+<div id="box">
+    <div class="view">
+        <div class="imgs">
+            <img src="images/a.jpg" alt="">
+            <img src="images/b.png" alt="">
+            <img src="images/c.png" alt="">
+        </div>
+        <ul id="btn">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <button class="prev">&gt;</button>
+        <button class="next">&lt;</button>
+    </div>
+    <div class="view">
+        <div class="imgs">
+            <img src="images/a.jpg" alt="">
+            <img src="images/b.png" alt="">
+            <img src="images/c.png" alt="">
+        </div>
+        <ul id="btn">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <button class="prev">&gt;</button>
+        <button class="next">&lt;</button>
+    </div>
+    <div class="view">
+        <div class="imgs">
+            <img src="images/a.jpg" alt="">
+            <img src="images/b.png" alt="">
+            <img src="images/c.png" alt="">
+        </div>
+        <ul id="btn">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <button class="prev">&gt;</button>
+        <button class="next">&lt;</button>
+    </div>
+    <div class="view">
+        <div class="imgs">
+            <img src="images/a.jpg" alt="">
+            <img src="images/b.png" alt="">
+            <img src="images/c.png" alt="">
+        </div>
+        <ul id="btn">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <button class="prev">&gt;</button>
+        <button class="next">&lt;</button>
+    </div>
+    <div class="view">
+        <div class="imgs">
+            <img src="images/a.jpg" alt="">
+            <img src="images/b.png" alt="">
+            <img src="images/c.png" alt="">
+        </div>
+        <ul id="btn">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <button class="prev">&gt;</button>
+        <button class="next">&lt;</button>
+    </div>
+    <div class="view">
+        <div class="imgs">
+            <img src="images/a.jpg" alt="">
+            <img src="images/b.png" alt="">
+            <img src="images/c.png" alt="">
+        </div>
+        <ul id="btn">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <button class="prev">&gt;</button>
+        <button class="next">&lt;</button>
+    </div>
+    <div class="view">
+        <div class="imgs">
+            <img src="images/a.jpg" alt="">
+            <img src="images/b.png" alt="">
+            <img src="images/c.png" alt="">
+        </div>
+        <ul id="btn">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <button class="prev">&gt;</button>
+        <button class="next">&lt;</button>
+    </div>
+    <div class="view">
+        <div class="imgs">
+            <img src="images/a.jpg" alt="">
+            <img src="images/b.png" alt="">
+            <img src="images/c.png" alt="">
+        </div>
+        <ul id="btn">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <button class="prev">&gt;</button>
+        <button class="next">&lt;</button>
+    </div>
+    <div class="view">
+        <div class="imgs">
+            <img src="images/a.jpg" alt="">
+            <img src="images/b.png" alt="">
+            <img src="images/c.png" alt="">
+        </div>
+        <ul id="btn">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <button class="prev">&gt;</button>
+        <button class="next">&lt;</button>
+    </div>
+    <div class="view">
+        <div class="imgs">
+            <img src="images/a.jpg" alt="">
+            <img src="images/b.png" alt="">
+            <img src="images/c.png" alt="">
+        </div>
+        <ul id="btn">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <button class="prev">&gt;</button>
+        <button class="next">&lt;</button>
+    </div>
+</div>
+</body>
+<script src="jquery-1.8.3.js"></script>
+<script>
+    var view = document.getElementsByClassName("view")
+    function Lunb(el,a) {
+        this.el = el
+        this.btn = el.children[1]
+        this.imgs = el.children[0].children
+        this.prev = el.children[2]
+        this.next = el.children[3]
+        this.li = el.children[1].children;
+        this.x = 0;
+
+        $(".imgs:eq("+a+") img:eq("+this.x+")").show();
+        this.li[this.x].style.background = "#ffffff";
+        var flag=true
+        this.nextFn = function () {
+
+            if(flag){
+                flag=false
+                $(".imgs:eq("+a+") img:eq("+this.x+")").fadeOut(1000);
+                this.li[this.x].style.background = "#bcbcbc";
+                this.x++;
+                if (this.x > this.imgs.length - 1) {
+                    this.x = 0
+                }
+                $(".imgs:eq("+a+") img:eq("+this.x+")").fadeIn(1000,function(){
+                    flag=true
+                });
+                this.li[this.x].style.background = "#ffffff";
+            }
+        }
+        this.prevFn = function () {
+
+            if(flag){
+                $(".imgs:eq("+a+") img:eq("+this.x+")").fadeOut(1000);
+                this.li[this.x].style.background = "#bcbcbc";
+                if (this.x < 0) {
+                    this.x = this.imgs.length - 1
+                }
+                $(".imgs:eq("+a+") img:eq("+this.x+")").fadeIn(1000,function(){
+                    flag=true
+                });
+                this.li[this.x].style.background = "#ffffff";
+            }
+        }
+        var self = this;
+        this.next.onclick = function () {
+            self.nextFn()
+        }
+        this.prev.onclick = function () {
+            self.prevFn()
+        }
+        for (var i = 0; i < this.li.length; i++) {
+
+            this.li[i].index = i
+            this.li[i].onclick = function () {
+                if(flag){
+                    flag=false
+                    $(".imgs:eq("+a+") img:eq("+self.x+")").fadeOut(1000);
+                    self.li[self.x].style.background = "#bcbcbc";
+                    self.x = this.index
+                    $(".imgs:eq("+a+") img:eq("+self.x+")").fadeIn(1000,function(){
+                        flag=true
+                    });
+                    self.li[self.x].style.background = "#ffffff";
+                }
+           }
+
+        }
+        var timer;
+
+        var self = this;
+        timer = setInterval(function () {
+            self.nextFn()
+        }, 2000)
+
+        this.el.onmouseover = function () {
+            clearInterval(timer)
+        }
+        this.el.onmouseout = function () {
+            timer = setInterval(function () {
+                self.nextFn()
+            }, 2000)
+        }
+    }
+
+    new Lunb(view[0],0)
+    new Lunb(view[1],1)
+    new Lunb(view[2],2)
+    new Lunb(view[3],3)
+    new Lunb(view[4],4)
+    new Lunb(view[5],5)
+    new Lunb(view[6],6)
+    new Lunb(view[7],7)
+    new Lunb(view[8],8)
+    new Lunb(view[9],9)
+
+</script>
+
+</html>
